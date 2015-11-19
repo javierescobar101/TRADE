@@ -1,0 +1,101 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<title>New Board</title>
+	<style type="text/css">
+	body{
+		background-color:#00254A;
+	}
+	h1{
+		color:white;
+	}
+	table{
+		color:white;
+	}
+.nav-bar{
+		background-color: #4D7094;
+	}
+	</style>
+</head>
+<body>
+	<div class="content">
+	 <div class="nav-bar">
+	   <div class="navbar-header">
+	   	<h4 style="color:white">Board Swap</h4>
+	    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-nav">
+	    		<span class="icon-bar"></span>
+	    		<span class="icon-bar"></span>
+	    		<span class="icon-bar"></span>
+	    	</button> 
+	    </div>
+		<div id="site-nav" class="navbar-collapse collapse">
+		  <ul class="nav navbar-nav navbar-right">
+		  	<li class="grow">
+		  	  <a href="#home" class="scrollto" style="color:white" ui-sref="">
+		  	  <i class="fa fa-home"></i>Home
+		  	  </a>
+		  	</li>
+		  	<li class="grow">
+		  	  <a href="#register" class="scrollto" style="color:white">
+		  	  <i class="fa fa-user-plus"></i>Register
+		  	  </a>
+		  	</li>
+		  	<li class="grow">
+		  	  <a href="#login" class="scrollto" style="color:white">
+		  	  <i class="fa fa-key"></i>Login
+		  	  </a>
+		  	</li>
+		  </ul>
+		</div>
+	 </div>
+	</div>
+
+	<div ui-view></div>
+	<div class= "container" ng-controller="AppCtrl">
+		<h1>New Item</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Url</th>
+					<th>Model</th>
+					<th>Year</th>
+					<th>Company</th>
+					<th>Condition</th>
+					<th>Action</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input class="form-control" ng-model="contact.url"></td>
+					<td><input class="form-control" ng-model="contact.model"></td>
+					<td><input class="form-control" ng-model="contact.year"></td>
+					<td><input class="form-control" ng-model="contact.company"></td>
+					<td><input class="form-control" ng-model="contact.condition"></td>
+					<td><button class="btn btn-primary" ng-click="addContact()">Add Board</button></td>
+					<td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+				</tr>
+				<tr ng-repeat="contact in contactlist">
+					<td><img src="{{contact.url}}" width="100"></img></td>
+					<td>{{contact.model}}</td>
+					<td>{{contact.year}}</td>
+					<td>{{contact.company}}</td>
+					<td>{{contact.condition}}</td>
+					<td><button class="btn btn-danger" ng-click="remove(contact._id)">remove</button></td>
+					<td><button class="btn btn-warning" ng-click="edit(contact)">edit</button></td>
+				</tr>
+			</tbody>
+
+		</table>
+
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
+	<script src="controllers/controller.js"></script>
+</body>
+</html>
